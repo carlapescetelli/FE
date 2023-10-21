@@ -20,7 +20,7 @@ if __name__ == '__main__':
         for el in oggetti:
           mesh= Mesh('/content/MeshCNN/checkpoints/ogg/meshes/'+ el, opt)
           edge_features = mesh.extract_features()
-          file.write(edge_features)
+          file.write(str(edge_features))
           file.write('\n')
     file.close()
      
