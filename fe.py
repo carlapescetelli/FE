@@ -10,13 +10,15 @@ Original file is located at
 from options.train_options import TrainOptions
 from data import DataLoader
 from models.layers.mesh import Mesh
+import os
 
 if __name__ == '__main__':
     opt = TrainOptions().parse()
-    dataset=DataLoader(opt)
+    #dataset=DataLoader()
+    oggetti=os.listdir('/content/MeshCNN/checkpoints/ogg/meshes/')
     with open('features.txt', 'w') as file:
-        for el in dataset:
-          mesh= Mesh('/content/MeshCNN/checkpoints/ogg/meshes/'+el, opt)
+        for el in oggetti:
+          mesh= Mesh(el, opt)
           edge_features = mesh.extract_features()
           file.write(edge_features+'\n')
     file.close()
