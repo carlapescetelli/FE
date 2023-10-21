@@ -17,10 +17,12 @@ if __name__ == '__main__':
     #dataset=DataLoader()
     oggetti=os.listdir('/content/MeshCNN/checkpoints/ogg/meshes/')
     with open('features.txt', 'w') as file:
-        for el in oggetti:
-          mesh= Mesh('/content/MeshCNN/checkpoints/ogg/meshes/'+ el, opt)
-          edge_features = mesh.extract_features()
-          file.write(str(edge_features))
-          file.write('\n')
+        i=3
+        for i in range(len(oggetti)):
+              mesh= Mesh('/content/MeshCNN/checkpoints/ogg/meshes/'+ oggetti[i], opt)
+              edge_features = mesh.extract_features()
+              file.write(str(edge_features))
+              file.write('\n')
+              i=i+4
     file.close()
      
