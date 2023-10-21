@@ -13,9 +13,11 @@ from models.layers.mesh import Mesh
 
 if __name__ == '__main__':
     opt = TrainOptions().parse()
-    #dataset = DataLoader(opt)
-    mesh= Mesh('/content/MeshCNN/checkpoints/ogg/meshes/model4_simplified_3.obj', opt)
-    edge_features = mesh.extract_features()
-
-print(edge_features)
-print(len(edge_features[0]))
+    dataset=DataLoader(opt)
+    with open('features.txt', 'w') as file:
+        for el in dataset:
+          mesh= Mesh('/content/MeshCNN/checkpoints/ogg/meshes/'+el, opt)
+          edge_features = mesh.extract_features()
+          file.write(edge_features+'\n')
+    file.close()
+     
